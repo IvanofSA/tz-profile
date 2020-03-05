@@ -45,24 +45,25 @@
 			onClose() {
 				this.$emit('onCloseRedactor')
 			},
-			async previewFiles() {
-				const file = this.$refs.myFiles.files[0];
-				if (file.type.indexOf('image/') === -1) {
-					alert('Please select an image file');
-					return;
-				}
-				if (typeof FileReader === 'function') {
-					const reader = new FileReader();
-					reader.onload = (event) => {
-						this.imgSrc = event.target.result;
-						// rebuild cropperjs with the updated source
-						this.$refs.cropper.replace(event.target.result);
-					};
-					reader.readAsDataURL(file);
-					this.isShowCrop = true;
-				} else {
-					alert('Sorry, FileReader API not supported');
-				}
+            readFileAsync(file) {
+                return new Promise((resolve, reject) => {
+                    let reader = new FileReader();
+                    reader.onload = () => {
+                        resolve(reader.result);
+                    };
+                    reader.onerror = reject;
+                    reader.readAsDataURL(file);
+                })
+            },
+            async previewFiles() {
+                const file = this.$refs.myFiles.files[0];
+                try {
+                    let base64 = await this.readFileAsync(file);
+                    this.$refs.cropper.replace(base64);
+                    this.isShowCrop = true;
+                } catch (err) {
+                    console.log(err);
+                }
 			}
 		}
 	}

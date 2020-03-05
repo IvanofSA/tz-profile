@@ -1,5 +1,5 @@
 <template lang="pug">
-	.photo(@mouseenter="isShowOverlay" @mouseleave="isHideOverlay")
+	.photo(@mouseenter="isToggleOverlay" @mouseleave="isToggleOverlay")
 		.photo__img(:class="{'empty': !avatar}")
 			img(:src="avatar" alt="avatar" v-if="avatar")
 		.photo__overlay(v-show="overlay" @click="onStartEdit")
@@ -28,11 +28,8 @@
 			editorIcon
 		},
 		methods: {
-			isShowOverlay() {
-				this.overlay = true;
-			},
-			isHideOverlay() {
-				this.overlay = false;
+			isToggleOverlay() {
+				this.overlay = !this.overlay;
 			},
 			onStartEdit() {
 				this.$emit("onStartEdit");
