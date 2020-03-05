@@ -34,7 +34,7 @@
 		methods: {
 			cropImage() {
 				this.cropImg = this.$refs.cropper.getCroppedCanvas().toDataURL();
-				this.$store.dispatch('CHANGE_USER_AVATAR', {img: this.cropImg});
+				this.$store.dispatch('changeUserAvatar', {img: this.cropImg});
 				this.$emit('onCloseRedactor')
 				this.clear();
 			},

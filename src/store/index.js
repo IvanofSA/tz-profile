@@ -5,66 +5,78 @@ import axios from "axios";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-	state: {
-		user: {}
-	},
-	getters: {
-		getUser: state => state.user,
-	},
-	mutations: {
-		setUser(state, payload) {
-			state.user = payload;
-		},
-		changeUserPhone(state, {value, name}) {
-			if(!state.user.contacts[name]) {
-				Vue.set(state.user.contacts, name, {});
-			}
-			Vue.set(state.user.contacts[name], 'text', value);
-		},
-		changeUserAbout(state, value) {
-			Vue.set(state.user, 'about', value);
-		},
-		changeUserSkills(state, {labels, type}) {
-			Vue.set(state.user, type, []);
-			labels.forEach((el, i) => {
-				Vue.set(state.user[type], i, el)
-			})
-		},
-		changeUserSocials(state, socials) {
-			socials.forEach((el, i) => {
-				if (state.user.socials[i].type === el.type) {
-					Vue.set(state.user.socials[i], 'url', el.url);
-				}
-			})
-		},
-		changeUserAvatar(state, img) {
-			Vue.set(state.user, 'photo', img)
-		}
-	},
-	actions: {
-		GET_USER({commit}) {
-			axios
-				.get('/data/user.json')
-				.then((res) => {
-					commit("setUser", res.data);
-				});
-		},
-		/*Тут отправляем данные на сервер*/
-		CHANGE_USER_PHONE({commit}, payload) {
-			commit('changeUserPhone', {value: payload.value, name: payload.name});
-		},
-		CHANGE_USER_ABOUT({commit}, payload) {
-			commit('changeUserAbout', payload.value);
-		},
-		CHANGE_USER_SKILLS({commit}, payload) {
-			commit('changeUserSkills', {labels: payload.labels, type: payload.type});
-		},
-		CHANGE_USER_SOCIALS({commit}, payload) {
-			commit('changeUserSocials', payload.socials);
-		},
-		CHANGE_USER_AVATAR({commit}, payload) {
-			commit('changeUserAvatar', payload.img);
-		}
-	},
-	strict: process.env.NODE_ENV !== "production"
+    state: {
+        user: {
+            about: null,
+            avatar: null,
+            phone_home: null,
+            interests: [],
+            skills: [],
+            socials: []
+        }
+    },
+    getters: {
+        getUser: state => state.user,
+    },
+    mutations: {
+        setUser(state, payload) {
+            state.user = payload;
+        },
+        SET_USER_PHONE(state, value) {
+            state.user.phone_home = value;
+        },
+        SET_USER_ABOUT(state, value) {
+            state.user.about = value;
+        },
+        SET_USER_SKILLS(state, {labels, type}) {
+            labels.forEach(label => {
+                state.user[type].push(label)
+            });
+        },
+        SET_USER_SOCIALS(state, socials) {
+            if (state.user.socials.length) {
+                socials.forEach((social, index) => {
+                    let item = state.user.socials[index];
+                    if (item.type === social.type) {
+                        item.url = social.url;
+                    }
+                });
+            } else {
+                socials.forEach(social => {
+                    state.user.socials.push(social)
+                });
+            }
+
+        },
+        SET_USER_AVATAR(state, img) {
+			console.log(img)
+            state.user.avatar = img;
+        }
+    },
+    actions: {
+        GET_USER({commit}) {
+            axios
+                .get('/data/user.json')
+                .then((res) => {
+                    commit("setUser", res.data);
+                });
+        },
+        /*Тут отправляем данные на сервер*/
+        changeUserPhone({commit}, payload) {
+            commit('SET_USER_PHONE', payload.value);
+        },
+        changeUserAbout({commit}, payload) {
+            commit('SET_USER_ABOUT', payload.value);
+        },
+        changeUserSkills({commit}, payload) {
+            commit('SET_USER_SKILLS', {labels: payload.labels, type: payload.type});
+        },
+        changeUserSocials({commit}, payload) {
+            commit('SET_USER_SOCIALS', payload.socials);
+        },
+        changeUserAvatar({commit}, payload) {
+            commit('SET_USER_AVATAR', payload.img);
+        }
+    },
+    strict: process.env.NODE_ENV !== "production"
 })

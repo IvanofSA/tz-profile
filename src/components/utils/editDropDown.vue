@@ -96,7 +96,7 @@
             },
             onDone() {
                 this.$emit('onDone');
-                this.$store.dispatch('CHANGE_USER_SKILLS', {labels: this.labels, type: this.type});
+                this.$store.dispatch('changeUserSkills', {labels: this.labels, type: this.type});
             },
             onClose() {
                 this.search = '';

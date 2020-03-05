@@ -1,8 +1,18 @@
 {
   "id": 1,
   "name": "Иванов Сергей",
-  "photo": "",
+  "avatar": "",
   "positions": "Директор",
+  "address": {
+    "text": "11 этаж, место 494",
+    "text_sup": "Башня Империя"
+  },
+  "fax": "+31182",
+  "phone_work": "+7 977 123-45-67",
+  "phone_home": "+7 977 123-45-67",
+  "email": "sergey.kudinov@dentsuaegis.ru",
+  "skype": "skype",
+  "teams": "teams",
   "department": {
     "text": "Группа крови на рукаве",
     "url": "url"
@@ -11,50 +21,9 @@
     "name": "человек",
     "url": "url"
   },
+  "interests": [],
+  "skills": [],
+  "socials": [],
   "date": "27.05.19",
-  "contacts": {
-    "address": {
-      "text": "11 этаж, место 494",
-      "text_sup": "Башня Империя"
-    },
-    "fax": {
-      "text": "+31182"
-    },
-    "phone_work": {
-      "text": "+7 977 123-45-67"
-    },
-
-    "email": {
-      "text": "sergey.kudinov@dentsuaegis.ru",
-      "url": "sergey.kudinov@dentsuaegis.ru"
-    },
-    "skype": {
-      "text": "skype",
-      "url": "skype"
-    },
-    "teams": {
-      "text": "teams",
-      "url": "Teams"
-    }
-  },
-  "socials": [
-    {
-      "type": "fb",
-      "url": "1"
-    },
-    {
-      "type": "vk",
-      "url": "2"
-    },
-    {
-      "type": "inst",
-      "url": "3"
-    },
-    {
-      "type": "ln",
-      "url": "4"
-    }
-  ],
-
   "about": "hello world"
 }

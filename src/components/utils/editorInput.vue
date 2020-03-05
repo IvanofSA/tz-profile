@@ -47,7 +47,7 @@
 			onDone() {
 				if (this.pattern.test(this.value)) {
 					this.$emit('onDone');
-					this.$store.dispatch('CHANGE_USER_PHONE', {value: this.value, name: this.name});
+					this.$store.dispatch('changeUserPhone', {value: this.value});
 				} else {
 					this.error = true;
 				}

@@ -30,8 +30,8 @@
 		methods: {
 			onDone() {
 				if (this.value) {
-					this.$emit('onDone')
-					this.$store.dispatch('CHANGE_USER_ABOUT', {value: this.value});
+					this.$emit('onDone');
+					this.$store.dispatch('changeUserAbout', {value: this.value});
 				} else {
 					this.error = true;
 				}

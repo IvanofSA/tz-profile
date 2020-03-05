@@ -42,7 +42,7 @@
 		methods: {
 			onDone() {
 				this.$emit('onDone');
-				this.$store.dispatch('CHANGE_USER_SOCIALS', {socials: this.socials});
+				this.$store.dispatch('changeUserSocials', {socials: this.socials});
 			},
 			onClose() {
 				this.value = null;
