@@ -46,7 +46,7 @@
         computed: {
             countMonth() {
             	this.moment.locale('ru');
-                return this.moment(this.date, "DD.MM.YY").fromNow();
+                return this.moment(this.date, "DD.MM.YY").fromNow().replace('назад', '');
             }
         }
     }
