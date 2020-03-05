@@ -3,7 +3,7 @@
         .info__box
             .info__group.info__group_position
                 p.info__text {{positions}}
-                    a(href="#")  Dentsu Aegis CS
+                    a(href="#")  Какая то работа
 
             .info__group.info__group_department
                 p.info__text(v-if="department")
@@ -14,7 +14,7 @@
                     a(:href="supervisor.url")  {{supervisor.name}}
         .info__box
             .info__group.info__group_time
-                span Работает в&nbsp;Dentsu
+                span Работает в&nbsp;работе
                 span  {{countMonth}} с&nbsp;{{date}}
 </template>
 

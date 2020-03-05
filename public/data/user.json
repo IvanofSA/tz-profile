@@ -1,6 +1,6 @@
 {
   "id": 1,
-  "name": "Иванов Сергей",
+  "name": "Иванов Иван",
   "avatar": "",
   "positions": "Директор",
   "address": {
@@ -10,16 +10,16 @@
   "fax": "+31182",
   "phone_work": "+7 977 123-45-67",
   "phone_home": "+7 977 123-45-67",
-  "email": "sergey.kudinov@dentsuaegis.ru",
+  "email": "ivan.ivan@yandex.ru",
   "skype": "skype",
   "teams": "teams",
   "department": {
     "text": "Группа крови на рукаве",
-    "url": "url"
+    "url": ""
   },
   "supervisor": {
     "name": "человек",
-    "url": "url"
+    "url": ""
   },
   "interests": [],
   "skills": [],
